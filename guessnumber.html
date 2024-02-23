@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess the Number</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+    }
+    #guessnumber {
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    p {
+        margin-bottom: 8px;
+    }
+</style>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    <input id="guessnumber">
+    <button onclick="check()">Check</button>
+    <p id="result">You are wrong/Right</p>
+    <p id="score">Score: 10</p>
+    <script>
+        var guessnumber = document.getElementById("guessnumber");
+        var result = document.getElementById("result");
+        var randomNumber = Math.floor(Math.random() * 10) + 1;
+        var score = document.getElementById("score");
+        var totalscore = 10;
+
+        function check() {
+            var enterednumber = parseInt(guessnumber.value);
+            if (randomNumber === enterednumber) {
+                console.log("Right");
+                result.textContent = "Right";
+                alert("You Won");
+            } else {
+                totalscore -= 1;
+                score.textContent = "Score: " + totalscore;
+                result.textContent = "Wrong";
+            }
+        }
+    </script>
+</body>
+</html>
