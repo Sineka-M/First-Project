@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #input {
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 8px;
+    }
+    li button {
+        padding: 4px 8px;
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 12px;
+    }
+    li button:hover {
+        background-color: #c82333;
+    }
+</style>
+</head>
+<body>
+    <input id="input">
+    <button onclick="add()">Add</button>
+    <ul id="list-container">
+        <li>HI Sneha
+            <button onclick="deleteitem(event)">Delete</button>
+        </li>
+    </ul>
+
+    <script>
+        var ul = document.getElementById('list-container');
+        var input = document.getElementById("input");
+        
+        function add() {
+            var listitem = document.createElement("li");
+            listitem.innerHTML = input.value + "<button onclick='deleteitem(event)'>Delete</button>";
+            ul.append(listitem);
+            input.value = ""; // Clear the input after adding
+        }
+        
+        function deleteitem(event) {
+            event.target.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
